@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <android.webkit.WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:id="@+id/imageButtonPreviousBook" android:layout_alignParentBottom="true" android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="false" android:src="@android:drawable/ic_media_rew" android:alpha="0.7"
+            android:layout_toLeftOf="@+id/imageButtonPreviousChapter" android:contentDescription="@string/previous_book"/>
+    <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:id="@+id/imageButtonPreviousChapter" android:layout_alignParentBottom="true" android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="false" android:src="@android:drawable/ic_media_previous" android:alpha="0.7"
+            android:layout_toLeftOf="@+id/imageButtonNextChapter" android:contentDescription="@string/previous_chapter"/>
+    <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:id="@+id/imageButtonNextChapter" android:layout_alignParentBottom="true" android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="false" android:src="@android:drawable/ic_media_next" android:alpha="0.7"
+            android:layout_toLeftOf="@+id/imageButtonNextBook" android:contentDescription="@string/next_chapter"/>
+    <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:id="@+id/imageButtonNextBook" android:layout_alignParentBottom="true" android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="false" android:src="@android:drawable/ic_media_ff" android:alpha="0.7"
+            android:layout_toLeftOf="@+id/imageButtonRotate" android:contentDescription="@string/next_book"/>
+    <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:id="@+id/imageButtonRotate" android:layout_alignParentBottom="true" android:layout_alignParentLeft="false"
+            android:layout_alignParentRight="true" android:src="@android:drawable/stat_notify_sync" android:alpha="0.5"
+            android:contentDescription="@string/previous_book" android:visibility="invisible"/>
+
+</RelativeLayout>

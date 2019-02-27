@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_mybible" default="compile.module.mybible">
+  <dirname property="module.mybible.basedir" file="${ant.file.module_mybible}"/>
+  
+  <property name="module.jdk.home.mybible" value="${jdk.home.android_api_19_platform}"/>
+  <property name="module.jdk.bin.mybible" value="${jdk.bin.android_api_19_platform}"/>
+  <property name="module.jdk.classpath.mybible" value="jdk.classpath.android_api_19_platform"/>
+  
+  <property name="compiler.args.mybible" value="-encoding x-windows-950 -source 1.6 ${compiler.args}"/>
+  
+  <property name="mybible.output.dir" value="${module.mybible.basedir}/../out/production/MyBible"/>
+  <property name="mybible.testoutput.dir" value="${module.mybible.basedir}/../out/test/MyBible"/>
+  
+  <path id="mybible.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="mybible.module.production.classpath">
+    <path refid="${module.jdk.classpath.mybible}"/>
+    <path refid="library.android-support-v13.classpath"/>
+  </path>
+  
+  <path id="mybible.runtime.production.module.classpath">
+    <pathelement location="${mybible.output.dir}"/>
+    <path refid="library.android-support-v13.classpath"/>
+  </path>
+  
+  <path id="mybible.module.classpath">
+    <path refid="${module.jdk.classpath.mybible}"/>
+    <pathelement location="${mybible.output.dir}"/>
+    <path refid="library.android-support-v13.classpath"/>
+  </path>
+  
+  <path id="mybible.runtime.module.classpath">
+    <pathelement location="${mybible.testoutput.dir}"/>
+    <pathelement location="${mybible.output.dir}"/>
+    <path refid="library.android-support-v13.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.mybible">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.mybible">
+    <patternset refid="excluded.from.module.mybible"/>
+  </patternset>
+  
+  <path id="mybible.module.sourcepath">
+    <dirset dir="${module.mybible.basedir}">
+      <include name="gen"/>
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.mybible" depends="compile.module.mybible.production,compile.module.mybible.tests" description="Compile module MyBible"/>
+  
+  <target name="compile.module.mybible.production" depends="register.custom.compilers" description="Compile module MyBible; production classes">
+    <mkdir dir="${mybible.output.dir}"/>
+    <javac2 destdir="${mybible.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.mybible}/javac">
+      <compilerarg line="${compiler.args.mybible}"/>
+      <bootclasspath refid="mybible.module.bootclasspath"/>
+      <classpath refid="mybible.module.production.classpath"/>
+      <src refid="mybible.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.mybible"/>
+    </javac2>
+    
+    <copy todir="${mybible.output.dir}">
+      <fileset dir="${module.mybible.basedir}/gen">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.mybible.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.mybible.tests" depends="register.custom.compilers,compile.module.mybible.production" description="compile module MyBible; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.mybible" description="cleanup module">
+    <delete dir="${mybible.output.dir}"/>
+    <delete dir="${mybible.testoutput.dir}"/>
+  </target>
+</project>

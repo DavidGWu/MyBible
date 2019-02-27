@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal" android:background="@android:color/holo_blue_light"
+        >
+
+    <Spinner
+            android:id="@+id/action_bar_spinner_history"
+            android:layout_width="wrap_content"
+            android:background="#ff335aff"
+            android:popupBackground="#ff335aff"
+            android:layout_height="wrap_content"
+            android:paddingRight="5dp" android:spinnerMode="dropdown">
+    </Spinner>
+
+    <Spinner
+            android:id="@+id/action_bar_bible_verse"
+            android:layout_width="wrap_content"
+            android:background="#ff76fff1"
+            android:popupBackground="#ff76fff1"
+            android:layout_height="wrap_content" android:paddingLeft="5dp" android:spinnerMode="dropdown"
+            android:minWidth="100dp" android:gravity="center_horizontal">
+    </Spinner>
+
+</LinearLayout>
